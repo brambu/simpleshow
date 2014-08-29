@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block scripts %}
+{{ super() }}
+<script>
+  $(document).ready(function(){
+    $('.carousel').carousel({
+      interval: {{carousel_interval}}
+    });
+  });
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="container" class="row-fluid">
+<div id="simpleshow-carousel" class="carousel slide">
+  <div class="carousel-inner">
+    {% set first_iteration = True %}
+    {% set active = "active" %}
+    {% for image in images_list %}
+    {% set image_path = url_for('static', filename=cache_dir+sep+image) %}
+    <div class="item {{active}}">
+      <img class="img-polaroid" src="{{image_path}}" alt="" />
+    </div>
+    {% if first_iteration %}
+      {% set first_iteration = False %}
+      {% set active = "" %}
+    {% endif %}
+    {% endfor %}
+  </div><!-- /.carousel-inner -->
+  <a class="carousel-control left" href="#simpleshow-carousel" data-slide="prev">&lsaquo;</a>
+  <a class="carousel-control right" href="#simpleshow-carousel" data-slide="next">&rsaquo;</a>
+</div><!-- /.carousel -->
+</div>
+{% endblock %}

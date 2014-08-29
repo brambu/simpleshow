@@ -1,0 +1,22 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/fixes.html" as fixes %}
+
+{% block title %}
+simple show
+{% endblock %}
+
+{% block head %}
+{{super()}}
+{{fixes.ie8()}}
+{% endblock %}
+
+{% block styles %}
+{{ super () }}
+<link href="{{ url_for('static', filename='css/darkstrap.css') }}" rel="stylesheet" />
+<link href="{{ url_for('static', filename='css/slideshow.css') }}" rel="stylesheet" />
+{% endblock %}
+
+
+
+{% block content %}
+{% endblock %}
