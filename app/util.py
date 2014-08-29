@@ -18,7 +18,12 @@ def update_cache(cache_path, media_path):
     existing_files = os.listdir(cache_path)
     media_files = os.listdir(media_path)
     new_files = list(set(media_files) - set(existing_files))
+    extra_files = list(set(existing_files) - set(media_files))
     log.info('update cache: new files found this update: {0}'.format(new_files))
+    log.info('update cache: stale files found this update: {0}'.format(extra_files))
+    for extra_file in extra_files:
+        log.info('deleting {0}'.format(extra_file))
+        os.remove(os.path.join(cache_path, extra_file))
     for new_file in new_files:
         log.info('update cache: copying new file: {0}'.format(new_file))
         try:
