@@ -15,4 +15,4 @@ def read_config(path):
 if __name__ == '__main__':
     config = read_config(config_path)
     app = create_app(config=config)
-    app.run(debug=True)
+    app.run(debug=config['debug'], port=config['port'], host=config['host'])
