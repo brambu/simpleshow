@@ -3,7 +3,7 @@ simpleshow
 
 a simple flask slideshow
 
-  1. edit config 
+  1. edit config (config/config.yaml) 
 
   2. bootstrap app
   ~~~
